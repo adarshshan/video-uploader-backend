@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getExample } from '../controller/userController';
+import { getAllVideoDetails,createNewUrl } from '../controller/userController';
 
 const router = Router();
 
-router.get('/', getExample);
+router.get('/', getAllVideoDetails)
+    .post('/', createNewUrl);
 
 export default router;
