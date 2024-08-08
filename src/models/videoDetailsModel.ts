@@ -9,6 +9,7 @@ export interface VideoDetailsInterface extends Document {
     name: string;
     videoLink: string;
     position: Position;
+    code: string;
 }
 
 
@@ -24,6 +25,10 @@ const videoDetailsShema: Schema<VideoDetailsInterface> = new Schema({
         type: String,
         enum: Position,
         required: true
+    },
+    code: {
+        type: String,
+        required: true,
     }
 });
 
