@@ -4,11 +4,13 @@ import { generateSimpleUniqueCode } from '../helpers/videoDetailsHelper';
 
 export const getAllVideoDetails = async (req: Request, res: Response) => {
     try {
-        const allData = await VideoDetailsModel.find();
-        console.log(allData);
-        res.json({ success: true, user: { name: 'Adarsh', age: 23, place: 'malappuram' }, data: allData });
+        const { code } = req.params;console.log(code);console.log('this is the code');
+        const videoData = await VideoDetailsModel.findOne({ code: code });
+        console.log(videoData);
+        res.json({ success: true, videoData });
     } catch (error) {
         console.log(error);
+        res.json({ success: false, message: 'Internal server error' });
     }
 };
 export const createNewUrl = async (req: Request, res: Response) => {
