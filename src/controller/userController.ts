@@ -4,9 +4,8 @@ import { generateSimpleUniqueCode } from '../helpers/videoDetailsHelper';
 
 export const getAllVideoDetails = async (req: Request, res: Response) => {
     try {
-        const { code } = req.params;console.log(code);console.log('this is the code');
+        const { code } = req.params;
         const videoData = await VideoDetailsModel.findOne({ code: code });
-        console.log(videoData);
         res.json({ success: true, videoData });
     } catch (error) {
         console.log(error);
@@ -16,7 +15,6 @@ export const getAllVideoDetails = async (req: Request, res: Response) => {
 export const createNewUrl = async (req: Request, res: Response) => {
     try {
         const { name, videoLink, position } = req.body;
-        console.log(name, videoLink, position);
         let code = generateSimpleUniqueCode(name);
         const newData = await VideoDetailsModel.create({
             name,
